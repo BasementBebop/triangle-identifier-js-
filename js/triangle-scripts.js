@@ -1,5 +1,7 @@
 var triangle = function(sides) {
-  sides.sort();
+  sides.sort(function(a, b) {
+    return a - b;
+  });
   if(sides[2] > sides[0] + sides[1]) {
     return "not a";
   } else if(sides[0] === sides[1] && sides[1] === sides[2]) {
@@ -13,11 +15,12 @@ var triangle = function(sides) {
 
 $(document).ready(function() {
   $("form#sides").submit(function(event){
-    var side1 = $("sides#side1").val();
-    var side2 = $("sides#side2").val();
-    var side3 = $("sides#side3").val();
-    var sides = [side1, side2, side3];
-    var output = triangle(sides);
+    var side1 = parseInt($("input#side1").val());
+    var side2 = parseInt($("input#side2").val());
+    var side3 = parseInt($("input#side3").val());
+    var sides_input = [side1, side2, side3];
+    var output = triangle(sides_input);
+
     $("#output").text(output);
 
     $(".result").show();
