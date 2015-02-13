@@ -18,13 +18,18 @@ $(document).ready(function() {
     var side1 = parseInt($("input#side1").val());
     var side2 = parseInt($("input#side2").val());
     var side3 = parseInt($("input#side3").val());
-    var sides_input = [side1, side2, side3];
-    var output = triangle(sides_input);
+    if(isNaN(side1) || isNaN(side2) || isNaN(side3)) {
+      $(".result").hide();
+      $(".form-error").show();
+    } else {
+      $(".form-error").hide();
+      var sides_input = [side1, side2, side3];
+      var output = triangle(sides_input);
 
-    $("#output").text(output);
+      $("#output").text(output);
 
-    $(".result").show();
-
+      $(".result").show();
+    }
     event.preventDefault();
   });
 });

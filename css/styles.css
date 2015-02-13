@@ -1,3 +1,7 @@
 .result {
   display:none;
 }
+
+.form-error {
+  display:none;
+}
